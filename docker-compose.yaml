@@ -15,7 +15,7 @@ services:
       -  MYSQL_PASSWORD=rootpass
       -  MYSQL_DATABASE=devops_exam
     volumes:
-      - ./backend/app.py:/app/app.py
+      - ./backend:/app
       # Map the frontend folder to the standard Flask templates directory
       - ./frontend:/app/templates
     depends_on:
@@ -27,7 +27,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./db/init.sql:/docker-entrypoint-initdb.d
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       -   MYSQL_ROOT_PASSWORD=rootpass
       -   MYSQL_DATABASE=devops_exam   
