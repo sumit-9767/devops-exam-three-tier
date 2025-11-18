@@ -8,19 +8,26 @@ services:
     ports:
       - 5000:5000
     environment:
+      -  FLASK_APP=app.py
+      -  FLASK_ENV=production
       -  MYSQL_HOST=mysql
       -  MYSQL_USER=root
       -  MYSQL_PASSWORD=rootpass
       -  MYSQL_DATABASE=devops_exam
+    volumes:
+      - ./backend:/app
+      - ./frontend:/app/templates
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
+
 
   mysql:
     image: mysql:latest
     ports:
       - 3306:3306
     volumes:
-      - ./db/init.sql:/docker-entrypoint-initdb.d
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       -   MYSQL_ROOT_PASSWORD=rootpass
       -   MYSQL_DATABASE=devops_exam   
