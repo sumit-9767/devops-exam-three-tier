@@ -1,0 +1,23 @@
+version: 3
+services:
+  backend:
+    build: ./backend
+    networks:
+      - three
+    environment:
+      -  MYSQL_HOST=mysql
+      -  MYSQL_USER=root
+      -  MYSQL_PASSWORD=rootpass
+      -  MYSQL_DATABASE=devops_exam
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    environment:
+      -   MYSQL_ROOT_PASSWORD=rootpass
+    networks:
+      - three
+networks:
+  three:
+    driver: bridge
