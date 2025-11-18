@@ -15,8 +15,9 @@ services:
       -  MYSQL_PASSWORD=rootpass
       -  MYSQL_DATABASE=devops_exam
     volumes:
-      - ./backend:/maal
-      - ./frontend:/maal/templates
+      - ./backend/app.py:/app/app.py
+      # Map the frontend folder to the standard Flask templates directory
+      - ./frontend:/app/templates
     depends_on:
       - mysql
 
@@ -35,5 +36,6 @@ services:
 networks:
   three:
     driver: bridge
+
 
 
