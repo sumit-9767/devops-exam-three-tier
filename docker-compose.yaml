@@ -15,8 +15,8 @@ services:
       -  MYSQL_PASSWORD=rootpass
       -  MYSQL_DATABASE=devops_exam
     volumes:
-      # - ./backend:/app
-      - ./frontend:/app/templates
+      - ./backend:/maal
+      - ./frontend:/maal/templates
     depends_on:
       - mysql
 
@@ -35,4 +35,5 @@ services:
 networks:
   three:
     driver: bridge
+
 
