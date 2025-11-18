@@ -22,6 +22,16 @@ def get_db_connection():
 def read_certificate_template():
     with open(os.path.join(os.path.dirname(__file__), 'certificate.html'), 'r') as file:
         return file.read()
+# 1. Define the root directory of your project (one level up from 'backend')
+PROJECT_ROOT = Path(__file__).parent.parent 
+
+# 2. Construct the absolute path to your 'frontend' folder
+# This should resolve to: your-flask-app/frontend
+TEMPLATE_DIR = str(PROJECT_ROOT / 'frontend')
+
+# 3. Initialize Flask, telling it to use the 'frontend' directory for templates
+# Note: You can also include 'static_folder' if you have CSS/JS in a separate folder
+app = Flask(__name__, template_folder=TEMPLATE_DIR)
 
 @app.route('/')
 def index():
