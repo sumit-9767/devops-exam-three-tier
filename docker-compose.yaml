@@ -1,6 +1,7 @@
 version: '2.26'
 services:
   backend:
+    image: backend:latest
     build: ./backend
     networks:
       - three
