@@ -1,7 +1,7 @@
 FROM python:3.10-slim
 
 # Set working directory
-WORKDIR /maal
+WORKDIR /app
 #Env
 ENV  MYSQL_HOST=mysql
 ENV  MYSQL_USER=root
